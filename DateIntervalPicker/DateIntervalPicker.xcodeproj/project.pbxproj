@@ -12,6 +12,8 @@
 		AC9E26841CBA63F100611807 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC9E26821CBA63F100611807 /* Main.storyboard */; };
 		AC9E26861CBA63F100611807 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC9E26851CBA63F100611807 /* Assets.xcassets */; };
 		AC9E26891CBA63F100611807 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC9E26871CBA63F100611807 /* LaunchScreen.storyboard */; };
+		ACCB20091CBA718500A184B8 /* DateIntervalPickerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCB20071CBA718500A184B8 /* DateIntervalPickerExtension.swift */; };
+		ACCB200A1CBA718500A184B8 /* DateIntervalPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCB20081CBA718500A184B8 /* DateIntervalPickerView.swift */; };
 		EFF5CAAE968D85E463E25C2C /* Pods_DateIntervalPicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A08F143570C4EB910D7E8E4 /* Pods_DateIntervalPicker.framework */; };
 /* End PBXBuildFile section */
 
@@ -26,6 +28,8 @@
 		AC9E26851CBA63F100611807 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AC9E26881CBA63F100611807 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AC9E268A1CBA63F100611807 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ACCB20071CBA718500A184B8 /* DateIntervalPickerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateIntervalPickerExtension.swift; sourceTree = "<group>"; };
+		ACCB20081CBA718500A184B8 /* DateIntervalPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateIntervalPickerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +96,8 @@
 		AC9E26901CBA64AB00611807 /* DateIntervalPickerView */ = {
 			isa = PBXGroup;
 			children = (
+				ACCB20071CBA718500A184B8 /* DateIntervalPickerExtension.swift */,
+				ACCB20081CBA718500A184B8 /* DateIntervalPickerView.swift */,
 			);
 			path = DateIntervalPickerView;
 			sourceTree = "<group>";
@@ -219,7 +225,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC9E26811CBA63F100611807 /* ViewController.swift in Sources */,
+				ACCB20091CBA718500A184B8 /* DateIntervalPickerExtension.swift in Sources */,
 				AC9E267F1CBA63F100611807 /* AppDelegate.swift in Sources */,
+				ACCB200A1CBA718500A184B8 /* DateIntervalPickerView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
