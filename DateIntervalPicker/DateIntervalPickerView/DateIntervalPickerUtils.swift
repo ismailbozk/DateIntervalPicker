@@ -1,8 +1,8 @@
 //
-//  DateIntervalPickerExtension.swift
+//  DateIntervalPickerUtils.swift
 //  DateIntervalPicker
 //
-//  Created by Ismail Bozkurt on 09/04/2016.
+//  Created by Ismail Bozkurt on 10/04/2016.
 //  The MIT License (MIT)
 //
 //  Copyright (c) 2016 Ismail Bozkurt
@@ -31,60 +31,44 @@ import Foundation
 private let dateUnits:NSCalendarUnit =
     [.Year, .Month, .Day, .Hour, .Minute, .Second, .WeekOfYear, .Weekday, .WeekdayOrdinal]
 
+class DateIntervalPickerUtils {
 
-extension NSDate {
-    
-    func numberOfDaysUntilDateTime(toDateTime: NSDate, inTimeZone timeZone: NSTimeZone? = nil) -> Int {
+    static func numberOfDays(fromDate: NSDate, toDate: NSDate, inTimeZone timeZone: NSTimeZone? = nil) -> Int {
         let calendar = NSCalendar.currentCalendar()
         if let timeZone = timeZone {
             calendar.timeZone = timeZone
         }
         
-        var fromDate: NSDate?, toDate: NSDate?
+        var fromDateTime: NSDate?, toDateTime: NSDate?
         
-        calendar.rangeOfUnit(.Day, startDate: &fromDate, interval: nil, forDate: self)
-        calendar.rangeOfUnit(.Day, startDate: &toDate, interval: nil, forDate: toDateTime)
+        calendar.rangeOfUnit(.Day, startDate: &fromDateTime, interval: nil, forDate: fromDate)
+        calendar.rangeOfUnit(.Day, startDate: &toDateTime, interval: nil, forDate: toDate)
         
-        let difference = calendar.components(.Day, fromDate: fromDate!, toDate: toDate!, options: [])
+        let difference = calendar.components(.Day, fromDate: fromDateTime!, toDate: toDateTime!, options: [])
         return difference.day
     }
     
-    func beginningOfDay(nextDay:Int = 0) -> NSDate {
-        
-        var date = self
-        
+    static func beginningOf(date: NSDate, nextDay:Int = 0) -> NSDate {
+        return self.updateDate(date, nextDay: nextDay, hour: 0, minute: 0, second: 0)
+    }
+    
+    static func endOf(date: NSDate, nextDay:Int = 0) -> NSDate {
+        return self.updateDate(date, nextDay: nextDay, hour: 23, minute: 59, second: 59)
+    }
+
+    private static func updateDate(date: NSDate, nextDay: Int, hour: Int, minute: Int, second: Int) -> NSDate{
         if let calendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian) {
             let comp = calendar.components(dateUnits, fromDate:date)
             
             comp.day += nextDay
-            comp.hour = 0
-            comp.minute = 0
-            comp.second = 0
-            if let endDate = calendar.dateFromComponents(comp) {
-                date = endDate
+            comp.hour = hour
+            comp.minute = minute
+            comp.second = second
+            if let newDate = calendar.dateFromComponents(comp) {
+                return newDate
             }
         }
         
         return date
     }
-
-    func endOfDay(nextDay:Int = 0) -> NSDate {
-        
-        var date = self
-        
-        if let calendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian) {
-            let comp = calendar.components(dateUnits, fromDate:date)
-            
-            comp.day += nextDay
-            comp.hour = 23
-            comp.minute = 59
-            comp.second = 59
-            if let endDate = calendar.dateFromComponents(comp) {
-                date = endDate
-            }
-        }
-        
-        return date
-    }
-
 }
