@@ -46,22 +46,28 @@ class DateIntervalPickerView: UIView, GLCalendarViewDelegate {
     var delegate: DateIntervalPickerViewDelegate?
     
     /// Default is today
-    var startDate : NSDate! = DateIntervalPickerView.beginningOfDate(NSDate()) {
+    var startDate : NSDate! = NSDate() {
         didSet {
-            self.currentDateRange?.beginDate = self.startDate
+            self.currentDateRange?.beginDate = startDate
             
-            if let _ = self.calendarView {
+            if (startDate.compare(self.endDate) == NSComparisonResult.OrderedDescending){
+                self.endDate = startDate
+            }
+            else if let _ = self.calendarView {
                 self.calendarView.reload()
             }
         }
     }
     
     /// Default one week later
-    var endDate : NSDate! = GLDateUtils.dateByAddingDays(7, toDate:DateIntervalPickerView.endOfDate(NSDate())) {
+    var endDate : NSDate! = GLDateUtils.dateByAddingDays(7, toDate:NSDate()) {
         didSet {
-            self.currentDateRange?.endDate = self.endDate
+            self.currentDateRange?.endDate = endDate
             
-            if let _ = self.calendarView {
+            if (endDate.compare(self.startDate) == NSComparisonResult.OrderedAscending){
+                self.startDate = endDate
+            }
+            else if let _ = self.calendarView {
                 self.calendarView.reload()
             }
         }
