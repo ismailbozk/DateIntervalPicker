@@ -47,28 +47,4 @@ class DateIntervalPickerUtils {
         let difference = calendar.components(.Day, fromDate: fromDateTime!, toDate: toDateTime!, options: [])
         return difference.day
     }
-    
-    static func beginningOf(date: NSDate, nextDay:Int = 0) -> NSDate {
-        return self.updateDate(date, nextDay: nextDay, hour: 0, minute: 0, second: 0)
-    }
-    
-    static func endOf(date: NSDate, nextDay:Int = 0) -> NSDate {
-        return self.updateDate(date, nextDay: nextDay, hour: 23, minute: 59, second: 59)
-    }
-
-    private static func updateDate(date: NSDate, nextDay: Int, hour: Int, minute: Int, second: Int) -> NSDate{
-        if let calendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian) {
-            let comp = calendar.components(dateUnits, fromDate:date)
-            
-            comp.day += nextDay
-            comp.hour = hour
-            comp.minute = minute
-            comp.second = second
-            if let newDate = calendar.dateFromComponents(comp) {
-                return newDate
-            }
-        }
-        
-        return date
-    }
 }

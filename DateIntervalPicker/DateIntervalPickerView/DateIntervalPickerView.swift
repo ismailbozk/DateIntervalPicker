@@ -137,8 +137,8 @@ class DateIntervalPickerView: UIView, GLCalendarViewDelegate {
         self.calendarView.showMagnifier = true
         self.calendarView.calendar.locale = NSLocale(localeIdentifier: "tr-TR")
         
-        self.calendarView.firstDate = GLDateUtils.dateByAddingDays(-365, toDate:DateIntervalPickerView.beginningOfDate(NSDate()))
-        self.calendarView.lastDate = GLDateUtils.dateByAddingDays(365, toDate:DateIntervalPickerView.endOfDate(NSDate()))
+        self.calendarView.firstDate = self.boundingStartDate
+        self.calendarView.lastDate = self.boundingEndDate
         
         let range : GLCalendarDateRange = createRangeWithStartDate(self.startDate, endDate: self.endDate)
         self.startWorkingOnRange(range)
@@ -213,11 +213,11 @@ class DateIntervalPickerView: UIView, GLCalendarViewDelegate {
         }
         
         let updateCurrentRangeClosure: dispatch_block_t = { [unowned self] in
-            if (DateIntervalPickerView.beginningOfDate(date).compare((self.startDate)!) == NSComparisonResult.OrderedAscending) {
-                self.setStartDate(DateIntervalPickerView.beginningOfDate(date))
+            if (date.compare((self.startDate)!) == NSComparisonResult.OrderedAscending) {
+                self.setStartDate(date)
             }
-            else if (DateIntervalPickerView.endOfDate(date).compare((self.endDate)!) == NSComparisonResult.OrderedDescending) {
-                self.setEndDate(DateIntervalPickerView.endOfDate(date))
+            else if (date.compare((self.endDate)!) == NSComparisonResult.OrderedDescending) {
+                self.setEndDate(date)
             }
             
             self.calendarView.updateRange(self.currentDateRange, withBeginDate: self.currentDateRange?.beginDate, endDate: self.currentDateRange?.endDate)
@@ -253,24 +253,11 @@ class DateIntervalPickerView: UIView, GLCalendarViewDelegate {
     }
     
     private func createRangeWithStartDate(startDate: NSDate, endDate: NSDate) -> GLCalendarDateRange {
-        let startDate = DateIntervalPickerView.beginningOfDate(startDate)
-        let endDate = DateIntervalPickerView.endOfDate(endDate)
-        
-        let range: GLCalendarDateRange =
-            GLCalendarDateRange(beginDate:DateIntervalPickerView.beginningOfDate(startDate)
-                , endDate:DateIntervalPickerView.endOfDate(endDate))
+        let range: GLCalendarDateRange = GLCalendarDateRange(beginDate:startDate, endDate:endDate)
         range.backgroundColor = UIColor(red: 52.0/255.0, green: 152.0/255.0, blue: 219.0/255.0, alpha: 1.0)
         range.editable = true
         
         return range
-    }
-    
-    private static func beginningOfDate(date: NSDate) -> NSDate{
-        return DateIntervalPickerUtils.beginningOf(date)
-    }
-    
-    private static func endOfDate(date: NSDate) -> NSDate{
-        return DateIntervalPickerUtils.endOf(date)
     }
     
     private func currentRangeDayCount() -> Int {
