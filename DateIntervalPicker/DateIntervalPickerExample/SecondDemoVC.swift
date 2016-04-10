@@ -47,7 +47,10 @@ class SecondDemoVC: UIViewController, DateIntervalPickerViewDelegate {
         
         self.dateIntervalPickerView.delegate = self
         self.dateIntervalPickerView.startDate = NSDate()
-        self.dateIntervalPickerView.endDate = NSDate()
+        self.dateIntervalPickerView.endDate = NSDate(timeInterval: -(60 * 60 * 24 * 2), sinceDate: NSDate())
+        
+        self.dateIntervalPickerView.rangeBackgroundColor = UIColor.purpleColor()
+        self.dateIntervalPickerView.reload()
         
         self.beginDateLabel.text = self.dateIntervalPickerView.startDate.description
         self.endDateLabel.text = self.dateIntervalPickerView.endDate.description

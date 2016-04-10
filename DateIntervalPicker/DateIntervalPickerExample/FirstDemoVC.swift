@@ -37,9 +37,18 @@ class FirstDemoVC: UIViewController, DateIntervalPickerViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let oneYear: NSTimeInterval = (60 * 60 * 24 * 30 * 12 /* years*/)
+        
         self.dateIntervalPickerView.delegate = self
         self.dateIntervalPickerView.startDate = NSDate()
         self.dateIntervalPickerView.endDate = NSDate()
+        self.dateIntervalPickerView.boundingStartDate = NSDate(timeInterval: (oneYear * 0.5 /* years*/), sinceDate: NSDate())
+        self.dateIntervalPickerView.boundingEndDate = NSDate(timeInterval: (oneYear * 1 /* years*/), sinceDate: NSDate())
+        
+        self.dateIntervalPickerView.startDate = NSDate(timeIntervalSinceNow: oneYear)
+        
+        self.dateIntervalPickerView.rangeBackgroundColor = UIColor.redColor()
+        self.dateIntervalPickerView.reload()
         
         self.beginDateLabel.text = self.dateIntervalPickerView.startDate.description
         self.endDateLabel.text = self.dateIntervalPickerView.endDate.description
