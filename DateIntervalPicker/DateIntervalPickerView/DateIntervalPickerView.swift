@@ -83,7 +83,6 @@ class DateIntervalPickerView: UIView, GLCalendarViewDelegate {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-//        fatalError("init(frame:) has not been implemented, try to initialize through a nib instead.")
         self.setup()
         self.reload()
     }
@@ -101,8 +100,17 @@ class DateIntervalPickerView: UIView, GLCalendarViewDelegate {
     override func didMoveToWindow() {
         super.didMoveToWindow()
         self.focusToCurrentRange(false)
-
-    }    
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        if !CGSizeEqualToSize(self.lastSize, self.bounds.size) {
+            self.lastSize = self.bounds.size
+            self.reload()
+            self.focusToCurrentRange(false)
+        }
+    }
     
     // MARK: Setup
     
@@ -146,7 +154,9 @@ class DateIntervalPickerView: UIView, GLCalendarViewDelegate {
     }
     
     private func focusToCurrentRange(animated: Bool) {
-        self.calendarView.scrollToDate(self.startDate, animated: animated)
+        dispatch_async(dispatch_get_main_queue()) { () -> Void in
+            self.calendarView.scrollToDate(self.startDate, animated: animated)
+        }
     }
     
     // MARK: GLCalendarViewDelegate
@@ -183,7 +193,7 @@ class DateIntervalPickerView: UIView, GLCalendarViewDelegate {
     }
     
     func calenderView(calendarView: GLCalendarView!, didUpdateRange range: GLCalendarDateRange!, toBeginDate beginDate: NSDate!, endDate: NSDate!) {
-        self.updateRangeWithSelectedRange(range)
+        self.notifyDelegateWithSelectedRange(range)
     }
     
     func calenderView(calendarView: GLCalendarView!, didSelectDate date: NSDate!) {
@@ -193,15 +203,15 @@ class DateIntervalPickerView: UIView, GLCalendarViewDelegate {
             calendarView.removeRange(self.currentDateRange)
             let newRange = self.createRangeWithStartDate(date, endDate: date);
             self.startWorkingOnRange(newRange)
-            self.updateRangeWithSelectedRange(newRange)
+            self.notifyDelegateWithSelectedRange(newRange)
         }
         
         let updateCurrentRangeClosure: dispatch_block_t = { [unowned self] in
-            if (self.beginningOfDate(date).compare((self.startDate)!) == NSComparisonResult.OrderedAscending) {
-                self.setStartDate(self.beginningOfDate(date))
+            if (DateIntervalPickerView.beginningOfDate(date).compare((self.startDate)!) == NSComparisonResult.OrderedAscending) {
+                self.setStartDate(DateIntervalPickerView.beginningOfDate(date))
             }
-            else if (self.endOfDate(date).compare((self.endDate)!) == NSComparisonResult.OrderedDescending) {
-                self.setEndDate(self.endOfDate(date))
+            else if (DateIntervalPickerView.endOfDate(date).compare((self.endDate)!) == NSComparisonResult.OrderedDescending) {
+                self.setEndDate(DateIntervalPickerView.endOfDate(date))
             }
             
             self.calendarView.updateRange(self.currentDateRange, withBeginDate: self.currentDateRange?.beginDate, endDate: self.currentDateRange?.endDate)
@@ -219,7 +229,7 @@ class DateIntervalPickerView: UIView, GLCalendarViewDelegate {
     
     // MARK: Helpers
     
-    private func updateRangeWithSelectedRange(range: GLCalendarDateRange) {
+    private func notifyDelegateWithSelectedRange(range: GLCalendarDateRange) {
         self.setStartDate(range.beginDate)
         self.setEndDate(range.endDate)
     }
