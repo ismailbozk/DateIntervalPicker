@@ -111,6 +111,14 @@ class DateIntervalPickerView: UIView, GLCalendarViewDelegate {
         }
     }
     
+    var rangeBackgroundColor: UIColor! = UIColor.blueColor() {
+        didSet {
+            if let _ = self.currentDateRange {
+                self.currentDateRange?.backgroundColor = rangeBackgroundColor
+            }
+        }
+    }
+    
     // MARK: Custom setters
     
     private func setStartDate(startDate: NSDate) {
@@ -302,7 +310,7 @@ class DateIntervalPickerView: UIView, GLCalendarViewDelegate {
     
     private func createRangeWithStartDate(startDate: NSDate, endDate: NSDate) -> GLCalendarDateRange {
         let range: GLCalendarDateRange = GLCalendarDateRange(beginDate:startDate, endDate:endDate)
-        range.backgroundColor = UIColor(red: 52.0/255.0, green: 152.0/255.0, blue: 219.0/255.0, alpha: 1.0)
+        range.backgroundColor = self.rangeBackgroundColor
         range.editable = true
         
         return range
