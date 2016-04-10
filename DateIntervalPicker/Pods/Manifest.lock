@@ -1,8 +1,10 @@
 PODS:
   - GLCalendarView (1.2.1)
+  - IBViewBorders (0.1.2)
 
 DEPENDENCIES:
   - GLCalendarView (from `https://github.com/ismailbozk/GLCalendarView.git`)
+  - IBViewBorders
 
 EXTERNAL SOURCES:
   GLCalendarView:
@@ -15,5 +17,6 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   GLCalendarView: 9d0be9a332bc09f556a79600a0d2d1404806f719
+  IBViewBorders: 89e4051cbd8417154282e22af9b3b28f4dad843a
 
 COCOAPODS: 0.39.0

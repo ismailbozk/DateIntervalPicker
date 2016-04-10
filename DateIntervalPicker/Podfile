@@ -2,6 +2,9 @@ platform :ios, '9.0'
 use_frameworks!
 
 target 'DateIntervalPicker' do
+
 pod 'GLCalendarView', :git => 'https://github.com/ismailbozk/GLCalendarView.git'
+pod 'IBViewBorders'
+
 end
 

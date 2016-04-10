@@ -9,6 +9,16 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>IBViewBorders-IBViewBorders.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>IBViewBorders.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-DateIntervalPicker.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -22,7 +32,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E3237942B5D665FEF05E0115BE953AA7</key>
+		<key>40EE2C1DF43C546F8A495F309986D907</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C65555AE7D6C1ADD1420105AA571466B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>DF478D7AEC99326B3654676CB4AA7A07</key>
 		<dict>
 			<key>primary</key>
 			<true/>

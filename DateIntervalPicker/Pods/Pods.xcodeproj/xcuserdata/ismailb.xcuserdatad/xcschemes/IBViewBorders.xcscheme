@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '884C1A23E57D2A5D5259D9F6'
-               BlueprintName = 'Pods-DateIntervalPicker'
+               BlueprintIdentifier = '246937DE7E073DF22624E0AA'
+               BlueprintName = 'IBViewBorders'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'Pods_DateIntervalPicker.framework'>
+               BuildableName = 'IBViewBorders.framework'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
