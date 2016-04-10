@@ -53,8 +53,9 @@ class DateIntervalPickerView: UIView, GLCalendarViewDelegate {
             if (startDate.compare(self.endDate) == NSComparisonResult.OrderedDescending){
                 self.endDate = startDate
             }
-            else if let _ = self.calendarView {
-                self.calendarView.reload()
+            
+            if (startDate.compare(self.boundingStartDate) == NSComparisonResult.OrderedAscending) {
+                self.boundingStartDate = GLDateUtils.dateByAddingMonths(-1, toDate: startDate)
             }
         }
     }
@@ -67,8 +68,45 @@ class DateIntervalPickerView: UIView, GLCalendarViewDelegate {
             if (endDate.compare(self.startDate) == NSComparisonResult.OrderedAscending){
                 self.startDate = endDate
             }
-            else if let _ = self.calendarView {
-                self.calendarView.reload()
+            
+            if (endDate.compare(self.boundingEndDate) == NSComparisonResult.OrderedDescending) {
+                self.boundingEndDate = GLDateUtils.dateByAddingMonths(1, toDate: startDate)
+            }
+        }
+    }
+    
+    /// Default 1 year ago today.
+    var boundingStartDate: NSDate! = GLDateUtils.dateByAddingDays(-365, toDate:NSDate()) {
+        didSet {
+            if boundingStartDate.compare(self.boundingEndDate) == NSComparisonResult.OrderedDescending {
+                self.boundingEndDate = GLDateUtils.dateByAddingMonths(1, toDate: boundingStartDate)
+            }
+            
+            // if start date is lower than bound date frame set start date to mid of the bound frame
+            if boundingStartDate.compare(self.startDate) == NSComparisonResult.OrderedDescending {
+                self.startDate = self.midDateBetweenDates(boundingStartDate, secondDate: self.boundingEndDate)
+            }
+            
+            if self.calendarView != nil {
+                self.calendarView.firstDate = boundingStartDate
+            }
+        }
+    }
+    
+    /// Default 1 year later today.
+    var boundingEndDate: NSDate! = GLDateUtils.dateByAddingDays(365, toDate:NSDate()) {
+        didSet {
+            if boundingEndDate.compare(self.boundingStartDate) == NSComparisonResult.OrderedAscending {
+                self.boundingStartDate = GLDateUtils.dateByAddingMonths(-1, toDate: boundingEndDate)
+            }
+            
+            // if start date is lower than bound date frame set start date to mid of the bound frame
+            if boundingEndDate.compare(self.endDate) == NSComparisonResult.OrderedAscending {
+                self.endDate = self.midDateBetweenDates(boundingEndDate, secondDate: self.boundingStartDate)
+            }
+
+            if self.calendarView != nil{
+                self.calendarView.lastDate = boundingEndDate
             }
         }
     }
@@ -105,7 +143,8 @@ class DateIntervalPickerView: UIView, GLCalendarViewDelegate {
     
     override func didMoveToWindow() {
         super.didMoveToWindow()
-        self.focusToCurrentRange(false)
+        self.reload()
+        self.focusToStartDate(false)
     }
     
     override func layoutSubviews() {
@@ -114,7 +153,23 @@ class DateIntervalPickerView: UIView, GLCalendarViewDelegate {
         if !CGSizeEqualToSize(self.lastSize, self.bounds.size) {
             self.lastSize = self.bounds.size
             self.reload()
-            self.focusToCurrentRange(false)
+            self.focusToStartDate(false)
+        }
+    }
+    
+    // MARK: Publics
+    
+    func reload() {
+        if let _ = self.calendarView {
+            dispatch_async(dispatch_get_main_queue()) { () -> Void in
+                self.calendarView.reload()
+            }
+        }
+    }
+    
+    func focusToStartDate(animated: Bool) {
+        dispatch_async(dispatch_get_main_queue()) { () -> Void in
+            self.calendarView.scrollToDate(self.startDate, animated: animated)
         }
     }
     
@@ -125,7 +180,7 @@ class DateIntervalPickerView: UIView, GLCalendarViewDelegate {
         
         self.setupCalendarView()
         self.reload()
-        self.focusToCurrentRange(false)
+        self.focusToStartDate(false)
     }
     
     private func setupCalendarView() {
@@ -151,18 +206,6 @@ class DateIntervalPickerView: UIView, GLCalendarViewDelegate {
         self.calendarView.ib_addTrailingConstraintToSuperViewWithMargin(0.0)
         self.calendarView.ib_addBottomConstraintToSuperViewWithMargin(0.0)
         self.calendarView.layoutIfNeeded()
-    }
-    
-    private func reload() {
-        dispatch_async(dispatch_get_main_queue()) { () -> Void in
-            self.calendarView.reload()
-        }
-    }
-    
-    private func focusToCurrentRange(animated: Bool) {
-        dispatch_async(dispatch_get_main_queue()) { () -> Void in
-            self.calendarView.scrollToDate(self.startDate, animated: animated)
-        }
     }
     
     // MARK: GLCalendarViewDelegate
@@ -234,6 +277,11 @@ class DateIntervalPickerView: UIView, GLCalendarViewDelegate {
     }
     
     // MARK: Helpers
+    
+    private func midDateBetweenDates(firstDate: NSDate, secondDate: NSDate) -> NSDate{
+        let timeDifference: NSTimeInterval = secondDate.timeIntervalSinceReferenceDate - firstDate.timeIntervalSinceReferenceDate
+        return NSDate(timeIntervalSinceReferenceDate: (timeDifference / 2) + firstDate.timeIntervalSinceReferenceDate)
+    }
     
     private func notifyDelegateWithSelectedRange(range: GLCalendarDateRange) {
         self.setStartDate(range.beginDate)
