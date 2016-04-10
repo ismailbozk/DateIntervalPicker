@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		AC9E267F1CBA63F100611807 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9E267E1CBA63F100611807 /* AppDelegate.swift */; };
-		AC9E26811CBA63F100611807 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9E26801CBA63F100611807 /* ViewController.swift */; };
 		AC9E26841CBA63F100611807 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC9E26821CBA63F100611807 /* Main.storyboard */; };
 		AC9E26861CBA63F100611807 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC9E26851CBA63F100611807 /* Assets.xcassets */; };
 		AC9E26891CBA63F100611807 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC9E26871CBA63F100611807 /* LaunchScreen.storyboard */; };
@@ -23,7 +22,6 @@
 		8F0E3D985A02C9F9A9A041BD /* Pods-DateIntervalPicker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DateIntervalPicker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DateIntervalPicker/Pods-DateIntervalPicker.debug.xcconfig"; sourceTree = "<group>"; };
 		AC9E267B1CBA63F100611807 /* DateIntervalPicker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DateIntervalPicker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC9E267E1CBA63F100611807 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		AC9E26801CBA63F100611807 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		AC9E26831CBA63F100611807 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AC9E26851CBA63F100611807 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AC9E26881CBA63F100611807 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -84,7 +82,6 @@
 			isa = PBXGroup;
 			children = (
 				AC9E267E1CBA63F100611807 /* AppDelegate.swift */,
-				AC9E26801CBA63F100611807 /* ViewController.swift */,
 				AC9E26821CBA63F100611807 /* Main.storyboard */,
 				AC9E26851CBA63F100611807 /* Assets.xcassets */,
 				AC9E26871CBA63F100611807 /* LaunchScreen.storyboard */,
@@ -224,7 +221,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AC9E26811CBA63F100611807 /* ViewController.swift in Sources */,
 				ACCB20091CBA718500A184B8 /* DateIntervalPickerExtension.swift in Sources */,
 				AC9E267F1CBA63F100611807 /* AppDelegate.swift in Sources */,
 				ACCB200A1CBA718500A184B8 /* DateIntervalPickerView.swift in Sources */,
