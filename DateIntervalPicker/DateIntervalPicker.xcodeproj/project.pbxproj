@@ -12,9 +12,14 @@
 		AC9E26841CBA63F100611807 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC9E26821CBA63F100611807 /* Main.storyboard */; };
 		AC9E26861CBA63F100611807 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC9E26851CBA63F100611807 /* Assets.xcassets */; };
 		AC9E26891CBA63F100611807 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC9E26871CBA63F100611807 /* LaunchScreen.storyboard */; };
+		AC9E26921CBA66A400611807 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = AC9E26911CBA66A400611807 /* Podfile */; };
+		EFF5CAAE968D85E463E25C2C /* Pods_DateIntervalPicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A08F143570C4EB910D7E8E4 /* Pods_DateIntervalPicker.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7A08F143570C4EB910D7E8E4 /* Pods_DateIntervalPicker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DateIntervalPicker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7F5F3B6C2B6F25017D590A06 /* Pods-DateIntervalPicker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DateIntervalPicker.release.xcconfig"; path = "Pods/Target Support Files/Pods-DateIntervalPicker/Pods-DateIntervalPicker.release.xcconfig"; sourceTree = "<group>"; };
+		8F0E3D985A02C9F9A9A041BD /* Pods-DateIntervalPicker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DateIntervalPicker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DateIntervalPicker/Pods-DateIntervalPicker.debug.xcconfig"; sourceTree = "<group>"; };
 		AC9E267B1CBA63F100611807 /* DateIntervalPicker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DateIntervalPicker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC9E267E1CBA63F100611807 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AC9E26801CBA63F100611807 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +27,7 @@
 		AC9E26851CBA63F100611807 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AC9E26881CBA63F100611807 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AC9E268A1CBA63F100611807 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AC9E26911CBA66A400611807 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,18 +35,39 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EFF5CAAE968D85E463E25C2C /* Pods_DateIntervalPicker.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		75533751A212E5841E429708 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7A08F143570C4EB910D7E8E4 /* Pods_DateIntervalPicker.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A9F8EA4C8015188F00783534 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8F0E3D985A02C9F9A9A041BD /* Pods-DateIntervalPicker.debug.xcconfig */,
+				7F5F3B6C2B6F25017D590A06 /* Pods-DateIntervalPicker.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		AC9E26721CBA63F100611807 = {
 			isa = PBXGroup;
 			children = (
+				AC9E26911CBA66A400611807 /* Podfile */,
 				AC9E267D1CBA63F100611807 /* DateIntervalPickerExample */,
 				AC9E26901CBA64AB00611807 /* DateIntervalPickerView */,
 				AC9E267C1CBA63F100611807 /* Products */,
+				A9F8EA4C8015188F00783534 /* Pods */,
+				75533751A212E5841E429708 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -79,9 +106,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AC9E268D1CBA63F100611807 /* Build configuration list for PBXNativeTarget "DateIntervalPicker" */;
 			buildPhases = (
+				27A3867F7F998A7B7E209520 /* Check Pods Manifest.lock */,
 				AC9E26771CBA63F100611807 /* Sources */,
 				AC9E26781CBA63F100611807 /* Frameworks */,
 				AC9E26791CBA63F100611807 /* Resources */,
+				5BEBF2F753DCFCA349DC406F /* Embed Pods Frameworks */,
+				3EE0333E527672CDD5F83806 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -132,11 +162,60 @@
 			files = (
 				AC9E26891CBA63F100611807 /* LaunchScreen.storyboard in Resources */,
 				AC9E26861CBA63F100611807 /* Assets.xcassets in Resources */,
+				AC9E26921CBA66A400611807 /* Podfile in Resources */,
 				AC9E26841CBA63F100611807 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		27A3867F7F998A7B7E209520 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		3EE0333E527672CDD5F83806 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DateIntervalPicker/Pods-DateIntervalPicker-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5BEBF2F753DCFCA349DC406F /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DateIntervalPicker/Pods-DateIntervalPicker-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		AC9E26771CBA63F100611807 /* Sources */ = {
@@ -257,6 +336,7 @@
 		};
 		AC9E268E1CBA63F100611807 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8F0E3D985A02C9F9A9A041BD /* Pods-DateIntervalPicker.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = DateIntervalPickerExample/Info.plist;
@@ -269,6 +349,7 @@
 		};
 		AC9E268F1CBA63F100611807 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7F5F3B6C2B6F25017D590A06 /* Pods-DateIntervalPicker.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = DateIntervalPickerExample/Info.plist;
@@ -298,6 +379,7 @@
 				AC9E268F1CBA63F100611807 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

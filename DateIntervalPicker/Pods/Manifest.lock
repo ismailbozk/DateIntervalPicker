@@ -1,0 +1,19 @@
+PODS:
+  - GLCalendarView (1.2.1)
+
+DEPENDENCIES:
+  - GLCalendarView (from `https://github.com/ismailbozk/GLCalendarView.git`)
+
+EXTERNAL SOURCES:
+  GLCalendarView:
+    :git: https://github.com/ismailbozk/GLCalendarView.git
+
+CHECKOUT OPTIONS:
+  GLCalendarView:
+    :commit: 8f3f3c216967ce38e46fb921ec02e0c7eae0c69f
+    :git: https://github.com/ismailbozk/GLCalendarView.git
+
+SPEC CHECKSUMS:
+  GLCalendarView: 9d0be9a332bc09f556a79600a0d2d1404806f719
+
+COCOAPODS: 0.39.0
