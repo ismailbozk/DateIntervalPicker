@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '884C1A23E57D2A5D5259D9F6'
+               BlueprintIdentifier = '9895E092CE6EF46C37DFFD2B'
                BlueprintName = 'Pods-DateIntervalPicker'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'Pods_DateIntervalPicker.framework'>

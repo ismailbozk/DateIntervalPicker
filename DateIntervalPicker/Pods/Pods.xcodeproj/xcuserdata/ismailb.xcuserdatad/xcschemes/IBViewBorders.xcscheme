@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '246937DE7E073DF22624E0AA'
+               BlueprintIdentifier = 'A69F0C1DFA1E3D62BBE7B10F'
                BlueprintName = 'IBViewBorders'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'IBViewBorders.framework'>

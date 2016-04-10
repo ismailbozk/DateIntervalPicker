@@ -12,7 +12,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   GLCalendarView:
-    :commit: 8f3f3c216967ce38e46fb921ec02e0c7eae0c69f
+    :commit: 12995328912dce365ad0fcd2364ba53d3c9e32c9
     :git: https://github.com/ismailbozk/GLCalendarView.git
 
 SPEC CHECKSUMS:
